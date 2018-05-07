@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Articles from '@/components/Articles'
+import AboutUs from '@/components/AboutUs'
 
 Vue.use(Router)
 
@@ -10,6 +11,11 @@ export default new Router({
       path: '/',
       name: 'Articles',
       component: Articles
+    },
+    {
+      path: "/aboutUs",
+      name: "AboutUs",
+      component: AboutUs
     }
   ]
 })
