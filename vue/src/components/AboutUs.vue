@@ -71,9 +71,8 @@
       </h4>
     </v-layout>
     </div>
-
     <v-parallax height="380"
-                src="https://scontent-vie1-1.xx.fbcdn.net/v/t1.0-9/21764839_1558359424184889_5954055909961640044_n.jpg?_nc_cat=0&oh=00324dfd41524244d7afce240b8e4865&oe=5B99AF21">
+                src="https://scontent-vie1-1.xx.fbcdn.net/v/t31.0-8/28516467_1723229397697890_4761380848373518823_o.jpg?_nc_cat=0&oh=8fc82ac5bf39562a1a1b15f82f572bce&oe=5B8F4B2B">
     </v-parallax>
   </div>
 </template>
@@ -87,8 +86,9 @@
 <style scoped>
 .au-text{
   padding: 20px 10px;
-  background-color: #e2efd0;
+  background-color: #fffcf6;
   margin: 30px;
   box-shadow: 5px 5px 10px 6px #aab7c3;
+  border-radius: 10px;
 }
 </style>
