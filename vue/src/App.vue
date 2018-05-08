@@ -2,11 +2,14 @@
   <div id="app">
     <div>
       <nav class="navbar navbar-light navbar-expand-md sticky-top order-2 navbar-dark" style="position:fixed;width:100%;">
-        <div class="container-fluid"><router-link class="navbar-brand" to="/"><img class="img-fluid"
-                                                                            src="static/img/inverted_logo.png" width="50vw"
-                                                                            id="logo"
-                                                                            style="padding:0;margin:15px 15px;"><strong
-          class="d-none d-sm-inline d-md-inline d-lg-inline d-xl-inline">Work. Save. Travel. Repeat.</strong></router-link>
+        <div class="container-fluid">
+          <router-link class="navbar-brand" to="/">
+            <img class="img-fluid"
+                 src="static/img/inverted_logo.png" width="50vw"
+                 id="logo"
+                 style="padding:0;margin:15px 15px;">
+            <strong class="d-none d-sm-inline d-md-inline d-lg-inline d-xl-inline">Work. Save. Travel. Repeat.</strong>
+          </router-link>
           <button
             class="navbar-toggler float-left" data-toggle="collapse" data-target="#navcol-1"
             style="position:fixed;top:10px;right:5px;"><span class="sr-only">Toggle navigation</span><span
@@ -31,50 +34,50 @@
           </div>
         </div>
       </nav>
-        <router-view
-          :auth="auth"
-          :authenticated="authenticated">
-        </router-view>
+      <router-view
+        :auth="auth"
+        :authenticated="authenticated">
+      </router-view>
     </div>
   </div>
 </template>
 
 <script>
 
-import AuthService from './auth/AuthService'
-const auth = new AuthService()
+  import AuthService from './auth/AuthService'
+  const auth = new AuthService()
 
-const { login, logout, authenticated, authNotifier } = auth
+  const { login, logout, authenticated, authNotifier } = auth
 
-export default {
-  name: 'App',
-  data () {
-    authNotifier.on('authChange', authState => {
-      this.authenticated = authState.authenticated
-    })
-    return {
-      auth,
-      authenticated
+  export default {
+    name: 'App',
+    data () {
+      authNotifier.on('authChange', authState => {
+        this.authenticated = authState.authenticated
+      })
+      return {
+        auth,
+        authenticated
+      }
+    },
+    methods: {
+      login,
+      logout
     }
-  },
-  methods: {
-    login,
-    logout
   }
-}
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  #app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 60px;
+  }
 
-.pointer {
-  cursor: pointer;
-}
+  .pointer {
+    cursor: pointer;
+  }
 </style>

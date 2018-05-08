@@ -17,7 +17,7 @@ export default class AuthService {
   auth0 = new auth0.WebAuth({
     domain: 'wstr.eu.auth0.com',
     clientID: 'g0fLszfUx1SdvuBWQiBbkFN2NS6s2JGs',
-    redirectUri: 'http://localhost:60000/callback',
+    redirectUri: 'https://work-save-travel-repeat.herokuapp.com/callback',
     audience: 'https://wstr.eu.auth0.com/userinfo',
     responseType: 'token id_token',
     scope: 'openid profile'
