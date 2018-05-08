@@ -2,18 +2,18 @@
   <div id="app">
     <div>
       <nav class="navbar navbar-light navbar-expand-md sticky-top order-2 navbar-dark" style="position:fixed;width:100%;">
-        <div class="container-fluid"><a class="navbar-brand" href="/"><img class="img-fluid"
+        <div class="container-fluid"><router-link class="navbar-brand" to="/"><img class="img-fluid"
                                                                             src="static/img/inverted_logo.png" width="50vw"
                                                                             id="logo"
                                                                             style="padding:0;margin:15px 15px;"><strong
-          class="d-none d-sm-inline d-md-inline d-lg-inline d-xl-inline">Work. Save. Travel. Repeat.</strong></a>
+          class="d-none d-sm-inline d-md-inline d-lg-inline d-xl-inline">Work. Save. Travel. Repeat.</strong></router-link>
           <button
             class="navbar-toggler float-left" data-toggle="collapse" data-target="#navcol-1"
             style="position:fixed;top:10px;right:5px;"><span class="sr-only">Toggle navigation</span><span
             class="navbar-toggler-icon custom-toggler"></span></button>
           <div class="collapse navbar-collapse" id="navcol-1">
             <ul class="nav navbar-nav">
-              <li class="nav-item" role="presentation"><a class="nav-link active" href="/aboutUs">About us</a></li>
+              <li class="nav-item" role="presentation"><router-link class="nav-link active" to="aboutUs">About us</router-link></li>
               <li class="nav-item" role="presentation"><a class="nav-link active" href="#">Travels</a></li>
               <li class="nav-item" role="presentation"><a class="nav-link active" href="#">Contact</a></li>
               <li
