@@ -19,11 +19,17 @@
               <li class="nav-item" role="presentation"><router-link class="nav-link active" to="aboutUs">About us</router-link></li>
               <li class="nav-item" role="presentation"><a class="nav-link active" href="#">Travels</a></li>
               <li class="nav-item" role="presentation"><a class="nav-link active" href="#">Contact</a></li>
+            </ul>
+            <v-spacer></v-spacer>
+            <ul class="nav navbar-nav">
+
               <li
                 class="nav-item" role="presentation"
                 v-if="!authenticated">
                 <a class="nav-link active pointer" @click="login()">Log In</a>
               </li>
+
+              <li v-if="authenticated" class="nav-item nav-link active" role="presentation"> {{ getUserData }} </li>
 
               <li
                 class="nav-item" role="presentation"
@@ -63,6 +69,11 @@
     methods: {
       login,
       logout
+    },
+    computed: {
+      getUserData: function () {
+        return localStorage.getItem("name")
+      }
     }
   }
 </script>

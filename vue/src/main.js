@@ -4,8 +4,10 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import Vuetify from 'vuetify'
+import Portal from 'portal-vue'
 
 Vue.use(Vuetify);
+Vue.use(Portal);
 Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
