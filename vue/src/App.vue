@@ -21,7 +21,7 @@
               <li class="nav-item" role="presentation"><a class="nav-link active" href="#">Contact</a></li>
             </ul>
             <v-spacer></v-spacer>
-            <ul class="nav navbar-nav">
+            <ul class="nav navbar-nav align-items-center">
 
               <li
                 class="nav-item" role="presentation"
@@ -29,7 +29,16 @@
                 <a class="nav-link active pointer" @click="login()">Log In</a>
               </li>
 
-              <li v-if="authenticated" class="nav-item nav-link active" role="presentation"> {{ getUserData }} </li>
+              <li v-if="authenticated" class="nav-item nav-link active" role="presentation">
+                <v-avatar
+                :size="40"
+                color="grey lighten-4"
+              >
+                <img v-bind:src="getUserProfileImage" alt="avatar">
+              </v-avatar>
+              </li>
+
+              <li v-if="authenticated" class="nav-item nav-link active" role="presentation"> {{ getUserFullName }}</li>
 
               <li
                 class="nav-item" role="presentation"
@@ -71,8 +80,11 @@
       logout
     },
     computed: {
-      getUserData: function () {
+      getUserFullName: function () {
         return localStorage.getItem("name")
+      },
+      getUserProfileImage: function () {
+        return localStorage.getItem("picture")
       }
     }
   }
