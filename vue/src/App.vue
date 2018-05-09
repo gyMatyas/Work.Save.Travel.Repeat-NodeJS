@@ -19,6 +19,7 @@
               <li class="nav-item" role="presentation"><router-link class="nav-link active" to="aboutUs">About us</router-link></li>
               <li class="nav-item" role="presentation"><a class="nav-link active" href="#">Travels</a></li>
               <li class="nav-item" role="presentation"><a class="nav-link active" href="#">Contact</a></li>
+              <li v-if="isAdmin" class="nav-item" role="presentation"><router-link class="nav-link active" to="Editor">Editor</router-link></li>
             </ul>
             <v-spacer></v-spacer>
             <ul class="nav navbar-nav align-items-center">
@@ -85,6 +86,9 @@
       },
       getUserProfileImage: function () {
         return localStorage.getItem("picture")
+      },
+      isAdmin: function () {
+        return this.$store.state.roles.includes("admin");
       }
     }
   }

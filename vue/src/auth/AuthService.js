@@ -1,6 +1,7 @@
 import auth0 from 'auth0-js'
 import EventEmitter from 'EventEmitter'
 import router from './../router'
+import store from './../store/index'
 
 export default class AuthService {
 
@@ -30,11 +31,12 @@ export default class AuthService {
   handleAuthentication () {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
-        this.setSession(authResult)
-        console.log(authResult);
-        router.push('/')
+        this.setSession(authResult);
+        router.push('/');
+        store.commit('logIn');
+        this.getRoles(authResult);
       } else if (err) {
-        router.replace('/')
+        router.replace('/');
         console.log(err)
       }
     })
@@ -63,6 +65,7 @@ export default class AuthService {
     this.userProfile = null
     this.authNotifier.emit('authChange', false)
     // navigate to the home route
+    store.commit('logOut');
     router.replace('/')
   }
 
@@ -71,5 +74,16 @@ export default class AuthService {
     // Access Token's expiry time
     let expiresAt = JSON.parse(localStorage.getItem('expires_at'))
     return new Date().getTime() < expiresAt
+  }
+
+  getRoles(authResult) {
+    let roles = []
+    this.auth0.client.userInfo(authResult.accessToken, function (err, userInfo) {
+      let rolesObj = userInfo["https://work-save-travel-repeat.herokuapp.com/roles"];
+       for (let i = 0; i < rolesObj.length; i++) {
+         roles.push(rolesObj[i]);
+       }
+      store.commit("setRules", roles);
+    })
   }
 }

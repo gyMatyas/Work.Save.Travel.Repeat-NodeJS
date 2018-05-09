@@ -4,6 +4,7 @@ import Articles from '@/components/Articles'
 import AboutUs from '@/components/AboutUs'
 import Callback from '@/components/Callback'
 import Editor from '@/components/Editor'
+import store from './../store'
 
 Vue.use(Router)
 
@@ -28,7 +29,14 @@ export default new Router({
     {
       path: "/editor",
       name: "Editor",
-      component: Editor
+      component: Editor,
+      beforeEnter: (to, from, next) => {
+        if(store.state.roles.includes("admin") ) {
+          next();
+        } else {
+          next(false);
+        }
+      }
     }
   ]
 })
